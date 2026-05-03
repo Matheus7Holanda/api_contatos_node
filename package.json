@@ -1,0 +1,39 @@
+{
+  "name": "api_contatos_node",
+  "version": "1.0.0",
+  "description": "api em node aula inicial",
+  "homepage": "https://github.com/jetrotal/api_contatos_node#readme",
+  "bugs": {
+    "url": "https://github.com/jetrotal/api_contatos_node/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jetrotal/api_contatos_node.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest --detectOpenHandles --forceExit"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "mongoose": "^6.13.9"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "supertest": "^7.2.2"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}

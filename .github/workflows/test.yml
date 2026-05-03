@@ -1,0 +1,44 @@
+name: Run Tests
+
+
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    environment: mongo db
+
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+
+      - name: Install dependencies
+        run: npm install
+
+
+      - name: Validate Environment Variables
+        run: |
+          if [ -z "${{ secrets.MONGODB_URI }}" ]; then
+            echo "❌ ERROR: MONGODB_URI secret não está definido!"
+            exit 1
+          fi
+          echo "✅ Secrets validadas com sucesso"
+
+      - name: Run tests
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          PORT: ${{ vars.PORT || '3000' }}
+        run: npm test
